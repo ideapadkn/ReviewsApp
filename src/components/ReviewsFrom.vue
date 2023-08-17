@@ -67,7 +67,7 @@ const setRating = (val) => {
           placeholder="Write a review"
           v-model="text"
         />
-        <button type="submit" class="" :disabled="btnDisabled">Send</button>
+        <button type="submit" class="bg-green-500 p-2 rounded-md text-white" :disabled="btnDisabled">Send</button>
       </div>
       <div v-if="message !== ''" class="text-red-500 text-center">
         {{ message }}
