@@ -1,14 +1,25 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import Card from "./shared/Card.vue";
 import RatingSelect from "./RatingSelect.vue";
 import { useReviewsStore } from "../stores/reviews.js";
+import { storeToRefs } from "pinia";
 
 const store = useReviewsStore();
 const text = ref("");
 const btnDisabled = ref(false);
 const message = ref("");
 const rating = ref(10);
+
+const { editedContent } = storeToRefs(store);
+
+watch(editedContent, (newData) => {
+  if (newData.editable) {
+    text.value = newData.item.text;
+    rating.value = newData.item.rating;
+  }
+});
+
 const handleSubmit = () => {
   const newReview = {
     text: text.value,
