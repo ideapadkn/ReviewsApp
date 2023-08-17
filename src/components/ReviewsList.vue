@@ -7,8 +7,13 @@ const store = useReviewsStore();
 
 <template>
   <div>
-    <p class="text-white mb-5">No Reviews Yet</p>
-    <div>
+    <p
+      v-if="!store.reviewsContent || store.reviewsContent.length === 0"
+      class="text-white mb-5"
+    >
+      No Reviews Yet
+    </p>
+    <div v-else>
       <ReviewsItem
         v-for="(item, i) in store.reviewsContent"
         :key="i"

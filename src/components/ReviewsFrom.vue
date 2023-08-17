@@ -20,6 +20,16 @@ watch(editedContent, (newData) => {
   }
 });
 
+watch(text, (newVal) => {
+  if (newVal.trim().length <= 10) {
+    btnDisabled.value = true;
+    message.value = "Text must be at least 10 characters!";
+  } else {
+    btnDisabled.value = false;
+    message.value = "";
+  }
+});
+
 const handleSubmit = () => {
   const newReview = {
     text: text.value,
@@ -59,8 +69,8 @@ const setRating = (val) => {
         />
         <button type="submit" class="" :disabled="btnDisabled">Send</button>
       </div>
-      <div class="text-red-500 text-center">
-        Text must be at least 10 characters!
+      <div v-if="message !== ''" class="text-red-500 text-center">
+        {{ message }}
       </div>
     </form>
   </Card>

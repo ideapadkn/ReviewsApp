@@ -1,3 +1,14 @@
 {
-  "reviews": []
+  "reviews": [
+    {
+      "text": "",
+      "rating": 10,
+      "id": 1
+    },
+    {
+      "text": "fdf",
+      "rating": 10,
+      "id": 2
+    }
+  ]
 }

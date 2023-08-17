@@ -5,7 +5,7 @@ const store = useReviewsStore();
 </script>
 
 <template>
-  <div class="flex justify-between items-center">
+  <div class="flex justify-between items-center mb-6">
     <h4 class="text-[18px] font-semibold text-white">
       {{ store.reviewsCount ? store.reviewsCount : "No" }}
       Reviews
