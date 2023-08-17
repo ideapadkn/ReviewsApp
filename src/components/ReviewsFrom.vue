@@ -14,8 +14,8 @@ const setRating = (val) => {
 </script>
 
 <template>
-  <Card class="rounded-xl p-8">
-    <form class="rounded">
+  <Card class="rounded-xl p-8 mb-5">
+    <form>
       <h2 class="text-center text-2xl font-bold mb-5">
         How would you rate your service with us?
       </h2>
