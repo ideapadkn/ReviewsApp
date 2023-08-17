@@ -65,6 +65,13 @@ export const useReviewsStore = defineStore("reviews", {
       };
       this.editedData = editedData;
     },
+    async deleteReview(review) {
+      await fetch(`http://localhost:5000/reviews/${review.id}`, {
+        method: "DELETE",
+      });
+      this.reviews = this.reviews.filter((rev) => rev.id !== review.id);
+      this.fetchReviews();
+    },
   },
   getters: {
     averageRating(state) {
