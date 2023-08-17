@@ -1,21 +1,29 @@
 <script setup>
+import { defineProps } from "vue";
 import Card from "./shared/Card.vue";
+import { useReviewsStore } from "../stores/reviews.js";
+
+const store = useReviewsStore();
+defineProps({
+  item: {
+    type: Object,
+  },
+});
 </script>
 
 <template>
-  <Card class="relative rounded-xl p-4">
+  <Card class="relative rounded-xl p-6 mb-5">
     <div class="absolute top-[0] right-2">
       <button class="">X</button>
-      <button class="ml-3">E</button>
+      <button class="ml-3" @click="store.editReview(item)">E</button>
     </div>
     <div
-      class="absolute top-[-10px] left-[-10px] w-[30px] h-[30px] bg-green-500 rounded-full flex justify-center items-center text-2xl text-white"
+      class="absolute top-[-10px] left-[-10px] w-[40px] h-[40px] bg-green-500 rounded-full flex justify-center items-center text-2xl text-white"
     >
-      <!-- {{ it }} -->
-      5
+      {{ item.rating }}
     </div>
     <div class="flex justify-center items-center">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+      {{ item.text }}
     </div>
   </Card>
 </template>

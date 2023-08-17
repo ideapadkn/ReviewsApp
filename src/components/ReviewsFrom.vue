@@ -14,7 +14,14 @@ const handleSubmit = () => {
     text: text.value,
     rating: rating.value,
   };
-  store.addReviews(newReview);
+  if (!store.editedContent.editable) {
+    store.addReviews(newReview);
+  } else {
+    store.updateReview({
+      ...newReview,
+      id: store.editedContent.item.id,
+    });
+  }
 };
 const setRating = (val) => {
   rating.value = val;

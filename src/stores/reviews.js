@@ -22,6 +22,49 @@ export const useReviewsStore = defineStore("reviews", {
       console.log(newReview);
       this.reviews = [newReview, ...this.reviews];
     },
+    async fetchReviews() {
+      try {
+        const reviews = await fetch(
+          `http://localhost:5000/reviews?_sort=id&_order=desc`
+        );
+        const data = await reviews.json();
+        this.reviews = data;
+        console.log(data);
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    editReview(review) {
+      let editedData = {
+        editable: true,
+        item: review,
+      };
+      this.editedData = editedData;
+    },
+    async updateReview(review) {
+      const response = await fetch(
+        `http://localhost:5000/reviews/${review.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(review),
+        }
+      );
+      const updatedReview = await response.json();
+      let reviews = this.reviews.map((item) =>
+        item.id === review.id ? { ...item, ...updatedReview } : item
+      );
+      this.reviews = reviews;
+      this.fetchReviews();
+
+      let editedData = {
+        editable: false,
+        item: null,
+      };
+      this.editedData = editedData;
+    },
   },
   getters: {
     averageRating(state) {
@@ -34,7 +77,13 @@ export const useReviewsStore = defineStore("reviews", {
       return temp;
     },
     reviewsCount() {
-      return this.reviews.length
-    }
+      return this.reviews.length;
+    },
+    reviewsContent() {
+      return this.reviews;
+    },
+    editedContent() {
+      return this.editedData;
+    },
   },
 });
