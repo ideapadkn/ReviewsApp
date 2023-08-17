@@ -2,11 +2,20 @@
 import { ref } from "vue";
 import Card from "./shared/Card.vue";
 import RatingSelect from "./RatingSelect.vue";
+import { useReviewsStore } from "../stores/reviews.js";
 
+const store = useReviewsStore();
 const text = ref("");
 const btnDisabled = ref(false);
 const message = ref("");
 const rating = ref(10);
+const handleSubmit = () => {
+  const newReview = {
+    text: text.value,
+    rating: rating.value,
+  };
+  store.addReviews(newReview);
+};
 const setRating = (val) => {
   rating.value = val;
   console.log(val);
@@ -15,7 +24,7 @@ const setRating = (val) => {
 
 <template>
   <Card class="rounded-xl p-8 mb-5">
-    <form>
+    <form @submit.prevent="handleSubmit">
       <h2 class="text-center text-2xl font-bold mb-5">
         How would you rate your service with us?
       </h2>

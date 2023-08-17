@@ -1,5 +1,5 @@
 <script setup>
-import ReviewsItem from './ReviewsItem.vue';
+import ReviewsItem from "./ReviewsItem.vue";
 </script>
 
 <template>
