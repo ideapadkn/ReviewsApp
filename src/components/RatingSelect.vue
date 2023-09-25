@@ -24,21 +24,10 @@ export default {
 
 <template>
   <ul class="flex justify-between items-center mb-5">
-    <li
-      class="flex justify-center items-center"
-      v-for="n in 10"
-      :key="`rating-${n}`"
-    >
-      <input
-        class="w-[20px] h-[20px]"
-        type="radio"
-        :id="`num${n}`"
-        name="rating"
-        :value="n"
-        :checked="selected === n"
-        v-model="selected"
-      />
-      <label :for="`num${n}`">
+    <li class="flex justify-center items-center" v-for="n in 10" :key="`rating-${n}`">
+      <input class="relative flex justify-center items-center w-[25px] h-[25px]" type="radio" :id="`num${n}`"
+        name="rating" :value="n" :checked="selected === n" v-model="selected" />
+      <label class="absolute text-[14px]" :for="`num${n}`">
         {{ n }}
       </label>
     </li>

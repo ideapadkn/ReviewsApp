@@ -58,16 +58,9 @@ const setRating = (val) => {
       </h2>
       <!-- Rating Component -->
       <RatingSelect :rating="rating" @setRating="setRating" />
-      <div
-        class="border-2 rounded-xl flex justify-between items-center p-4 mb-5"
-      >
-        <input
-          class="outline-none w-full"
-          type="text"
-          placeholder="Write a review"
-          v-model="text"
-        />
-        <button type="submit" class="bg-green-500 p-2 rounded-md text-white" :disabled="btnDisabled">Send</button>
+      <div class="border-2 rounded-xl flex justify-between items-center p-4 mb-5">
+        <input class="outline-none w-full" type="text" placeholder="Write a review" v-model="text" />
+        <button type="submit" class="bg-green-500 p-2 rounded-md text-white" :disabled="btnDisabled">Submit</button>
       </div>
       <div v-if="message !== ''" class="text-red-500 text-center">
         {{ message }}

@@ -18,8 +18,7 @@ defineProps({
       <button class="ml-3" @click="store.deleteReview(item)">X</button>
     </div>
     <div
-      class="absolute top-[-10px] left-[-10px] w-[40px] h-[40px] bg-green-500 rounded-full flex justify-center items-center text-2xl text-white"
-    >
+      class="absolute top-[-10px] left-[-10px] w-[40px] h-[40px] bg-green-500 rounded-full flex justify-center items-center text-2xl text-white">
       {{ item.rating }}
     </div>
     <div class="flex justify-center items-center">
